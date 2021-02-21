@@ -1,0 +1,24 @@
+2021-02-21 00:00:00,955 INFO 33553 [egg-logrotator] app logger reload: got log-reload message
+2021-02-21 04:29:59,838 INFO 33553 [-/127.0.0.1/-/2ms SCHEDULE /__schedule?path=/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js&type=worker&cron=0%2030%204%20*%20*%20*&immediate=false] [egg-multipart:CleanTmpdir] start clean tmpdir: "/var/folders/ml/2rrzln113wx3736t3725z8tw0000gn/T/egg-multipart-tmp/yi-dian-saving-backend"
+2021-02-21 04:29:59,871 INFO 33553 [-/127.0.0.1/-/34ms SCHEDULE /__schedule?path=/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js&type=worker&cron=0%2030%204%20*%20*%20*&immediate=false] [egg-multipart:CleanTmpdir] end
+2021-02-21 08:18:28,276 WARN 33553 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2021-02-21 08:18:28,280 WARN 33553 [ClusterClient:Watcher] follower closed, and try to init it again
+2021-02-21 08:22:23,013 WARN 33553 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2021-02-21 08:22:23,013 WARN 33553 [ClusterClient:Watcher] follower closed, and try to init it again
+2021-02-21 08:30:26,008 WARN 33553 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2021-02-21 08:30:26,009 WARN 33553 [ClusterClient:Watcher] follower closed, and try to init it again
+2021-02-21 08:36:18,847 INFO 63193 [egg:logger] init all loggers with options: {"dir":"/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"yi-dian-saving-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-02-21 08:36:18,884 INFO 63193 [egg-multipart] stream mode enable
+2021-02-21 08:36:19,440 INFO 63193 [egg-static] starting static serve /public/ -> /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/app/public
+2021-02-21 08:36:19,442 INFO 63193 [egg-security] use methodnoallow middleware
+2021-02-21 08:36:19,443 INFO 63193 [egg-security] use noopen middleware
+2021-02-21 08:36:19,444 INFO 63193 [egg-security] use nosniff middleware
+2021-02-21 08:36:19,444 INFO 63193 [egg-security] use xssProtection middleware
+2021-02-21 08:36:19,445 INFO 63193 [egg-security] use xframe middleware
+2021-02-21 08:36:19,446 INFO 63193 [egg-security] use dta middleware
+2021-02-21 08:36:19,446 INFO 63193 [egg-security] compose 6 middlewares into one security middleware
+2021-02-21 08:36:19,464 INFO 63193 [egg:core] dump config after load, 6ms
+2021-02-21 08:36:19,517 INFO 63193 [egg-watcher:application] watcher start success
+2021-02-21 08:36:19,585 INFO 63193 [egg:core] dump config after ready, 5ms
+2021-02-21 09:04:48,179 WARN 63193 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2021-02-21 09:04:48,180 WARN 63193 [ClusterClient:Watcher] follower closed, and try to init it again

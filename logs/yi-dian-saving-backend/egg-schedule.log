@@ -1,0 +1,6 @@
+2021-02-21 04:29:59,870 INFO 13993 [Timer] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 86400168ms at 2021-02-22 04:30:00.037
+2021-02-21 04:29:59,836 INFO 33553 [Job#1613852999831737163181463751] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js executing by app
+2021-02-21 04:29:59,871 INFO 33553 [Job#1613852999831737163181463751] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js execute succeed, used 35ms. 
+2021-02-21 08:36:18,883 INFO 63193 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2021-02-21 08:36:18,883 INFO 63193 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js
+2021-02-21 08:36:18,883 INFO 63193 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js

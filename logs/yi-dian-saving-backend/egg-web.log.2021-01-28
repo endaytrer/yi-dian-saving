@@ -1,0 +1,42 @@
+2021-01-27 01:12:00,046 INFO 20431 [egg:logger] init all loggers with options: {"dir":"/Volumes/Data/Files/ACM/Projects/Tiaozhan/yi-dian-saving/logs/yi-dian-saving-backend","encoding":"utf8","env":"unittest","level":"INFO","consoleLevel":"WARN","disableConsoleAfterReady":false,"outputJSON":false,"buffer":false,"appLogName":"yi-dian-saving-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{},"allowDebugAtProd":false,"type":"application"}
+2021-01-27 01:12:00,055 INFO 20431 [egg-multipart] stream mode enable
+2021-01-27 01:12:00,400 INFO 20431 [egg-static] starting static serve /public/ -> /Volumes/Data/Files/ACM/Projects/Tiaozhan/yi-dian-saving/app/public
+2021-01-27 01:12:00,403 INFO 20431 [egg-security] use methodnoallow middleware
+2021-01-27 01:12:00,404 INFO 20431 [egg-security] use noopen middleware
+2021-01-27 01:12:00,405 INFO 20431 [egg-security] use nosniff middleware
+2021-01-27 01:12:00,406 INFO 20431 [egg-security] use xssProtection middleware
+2021-01-27 01:12:00,407 INFO 20431 [egg-security] use xframe middleware
+2021-01-27 01:12:00,408 INFO 20431 [egg-security] use dta middleware
+2021-01-27 01:12:00,408 INFO 20431 [egg-security] compose 6 middlewares into one security middleware
+2021-01-27 01:12:00,521 INFO 20431 [egg:core] dump config after load, 2ms
+2021-01-27 01:12:00,530 INFO 20431 [egg-watcher:application] watcher start success
+2021-01-27 01:12:00,543 INFO 20431 [egg:core] dump config after ready, 4ms
+2021-01-28 19:28:27,749 INFO 70623 [egg:logger] init all loggers with options: {"dir":"/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"yi-dian-saving-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-01-28 19:28:27,781 INFO 70623 [egg-multipart] stream mode enable
+2021-01-28 19:28:29,856 INFO 70623 [egg-static] starting static serve /public/ -> /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/app/public
+2021-01-28 19:28:29,858 INFO 70623 [egg-security] use methodnoallow middleware
+2021-01-28 19:28:29,859 INFO 70623 [egg-security] use noopen middleware
+2021-01-28 19:28:29,860 INFO 70623 [egg-security] use nosniff middleware
+2021-01-28 19:28:29,860 INFO 70623 [egg-security] use xssProtection middleware
+2021-01-28 19:28:29,861 INFO 70623 [egg-security] use xframe middleware
+2021-01-28 19:28:29,862 INFO 70623 [egg-security] use dta middleware
+2021-01-28 19:28:29,862 INFO 70623 [egg-security] compose 6 middlewares into one security middleware
+2021-01-28 19:28:30,003 INFO 70623 [egg:core] dump config after load, 3ms
+2021-01-28 19:28:30,057 INFO 70623 [egg-watcher:application] watcher start success
+2021-01-28 19:28:30,089 INFO 70623 [egg:core] dump config after ready, 8ms
+2021-01-28 20:15:01,328 INFO 72037 [egg:logger] init all loggers with options: {"dir":"/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"INFO","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"yi-dian-saving-backend-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"allowDebugAtProd":false,"type":"application"}
+2021-01-28 20:15:01,375 INFO 72037 [egg-multipart] stream mode enable
+2021-01-28 20:15:01,762 INFO 72037 [egg-static] starting static serve /public/ -> /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/app/public
+2021-01-28 20:15:01,764 INFO 72037 [egg-security] use methodnoallow middleware
+2021-01-28 20:15:01,764 INFO 72037 [egg-security] use noopen middleware
+2021-01-28 20:15:01,765 INFO 72037 [egg-security] use nosniff middleware
+2021-01-28 20:15:01,765 INFO 72037 [egg-security] use xssProtection middleware
+2021-01-28 20:15:01,765 INFO 72037 [egg-security] use xframe middleware
+2021-01-28 20:15:01,766 INFO 72037 [egg-security] use dta middleware
+2021-01-28 20:15:01,766 INFO 72037 [egg-security] compose 6 middlewares into one security middleware
+2021-01-28 20:15:01,779 INFO 72037 [egg:core] dump config after load, 6ms
+2021-01-28 20:15:01,832 INFO 72037 [egg-watcher:application] watcher start success
+2021-01-28 20:15:01,862 INFO 72037 [egg:core] dump config after ready, 7ms
+2021-01-29 00:00:00,108 INFO 72037 [egg-logrotator] clean all log before 31 days
+2021-01-29 00:00:01,136 INFO 72037 [egg-logrotator] broadcast log-reload
+2021-01-29 00:00:01,139 INFO 72037 [egg-logrotator] rotate files success by DayRotator, files ["/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/common-error.log -> /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/common-error.log.2021-01-28","/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/yi-dian-saving-backend-web.log -> /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/yi-dian-saving-backend-web.log.2021-01-28","/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/egg-web.log -> /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/egg-web.log.2021-01-28","/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/egg-schedule.log -> /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/egg-schedule.log.2021-01-28","/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/egg-agent.log -> /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend/egg-agent.log.2021-01-28"]

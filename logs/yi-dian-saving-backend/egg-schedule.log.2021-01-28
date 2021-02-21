@@ -1,0 +1,21 @@
+2021-01-27 01:12:00,054 INFO 20431 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/Tiaozhan/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2021-01-27 01:12:00,055 INFO 20431 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/Tiaozhan/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js
+2021-01-27 01:12:00,055 INFO 20431 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/Tiaozhan/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2021-01-27 01:12:00,547 INFO 20431 [Timer] /Volumes/Data/Files/ACM/Projects/Tiaozhan/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 11879456ms at 2021-01-27 04:30:00.003
+2021-01-27 01:12:00,547 INFO 20431 [Timer] /Volumes/Data/Files/ACM/Projects/Tiaozhan/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 82079453ms at 2021-01-28 00:00:00.000
+2021-01-27 01:12:00,548 INFO 20431 [Timer] /Volumes/Data/Files/ACM/Projects/Tiaozhan/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 82080452ms at 2021-01-28 00:00:01.000
+2021-01-28 19:28:27,780 INFO 70623 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2021-01-28 19:28:27,780 INFO 70623 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js
+2021-01-28 19:28:27,780 INFO 70623 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2021-01-28 19:28:30,100 INFO 70602 [Timer] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js next time will execute after 32489903ms at 2021-01-29 04:30:00.003
+2021-01-28 19:28:30,101 INFO 70602 [Timer] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 16289900ms at 2021-01-29 00:00:00.001
+2021-01-28 19:28:30,101 INFO 70602 [Timer] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 16290899ms at 2021-01-29 00:00:01.000
+2021-01-28 20:15:01,374 INFO 72037 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart/app/schedule/clean_tmpdir.js
+2021-01-28 20:15:01,374 INFO 72037 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js
+2021-01-28 20:15:01,374 INFO 72037 [egg-schedule]: register schedule /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2021-01-29 00:00:00,094 INFO 72037 [Job#1611849600087985145140467201] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js executing by app
+2021-01-29 00:00:00,108 INFO 72037 [Job#1611849600087985145140467201] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js execute succeed, used 11ms. 
+2021-01-29 00:00:00,100 INFO 70602 [Timer] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/clean_log.js next time will execute after 86399910ms at 2021-01-30 00:00:00.009
+2021-01-29 00:00:01,103 INFO 70602 [Timer] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js next time will execute after 86399910ms at 2021-01-30 00:00:01.013
+2021-01-29 00:00:01,095 INFO 72037 [Job#1611849601090985155164310671] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js executing by app
+2021-01-29 00:00:01,139 INFO 72037 [Job#1611849601090985155164310671] /Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator/app/schedule/rotate_by_file.js execute succeed, used 44ms. 
