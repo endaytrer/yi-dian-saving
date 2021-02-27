@@ -1,22 +1,28 @@
 import { Service } from 'egg';
+import { Op } from 'sequelize';
 import { hash, compare } from 'bcrypt';
+import { getAge } from '../utility/others';
 export default class User extends Service {
   public async addProduct(
     productName: string,
     providerName: string,
     interestRate: number,
     price: number,
-    total: number
+    total: number,
+    category: number,
+    minimumHoldTime: number
   ): Promise<number> {
-    const book = await this.ctx.model.Product.create({
+    const product = await this.ctx.model.Product.create({
       productName: productName,
       providerName: providerName,
       interestRate: interestRate,
-      price: price,
+      price,
       total,
       remains: total,
+      category,
+      minimumHoldTime,
     });
-    return book.id;
+    return product.id;
   }
 
   public async deleteProduct(id: number): Promise<boolean> {
@@ -34,33 +40,55 @@ export default class User extends Service {
     return true;
   }
 
-  public async getAllProducts(
-    page: number,
-    limit: number
-  ): Promise<{ total: number; products: any[] }> {
+  public async getAllProducts(): Promise<{ total: number; products: any[] }> {
+    const category = await this.getSelfCategory();
     const { model } = this.ctx;
     const products: {
       count: number;
       rows: any[];
     } = await model.Product.findAndCountAll({
+      where: {
+        category: {
+          [Op.lte]: category,
+        },
+      },
       attributes: [
         'id',
         ['product_name', 'productName'],
         ['provider_name', 'providerName'],
         ['interest_rate', 'interestRate'],
         'price',
+        'category',
+        ['last_price', 'lastPrice'],
         'total',
         'remains',
+        ['minimum_hold_time', 'minimumHoldTime'],
       ],
-      offset: (page - 1) * limit,
-      limit,
     });
     return {
       total: products.count,
       products: products.rows,
     };
   }
-
+  public async getSelfInfo(): Promise<Object> {
+    const { ctx } = this;
+    const { User } = ctx.model;
+    const id = ctx.session.userId;
+    const user = await User.findByPk(id, {
+      attributes: [
+        ['id', 'userId'],
+        ['user_name', 'name'],
+        'birthday',
+        'target',
+        'continuous',
+        ['saved_today', 'savedToday'],
+        'email',
+        'phone',
+        'balance',
+      ],
+    });
+    return user;
+  }
   public async getAllUsers(
     page: number,
     limit: number
@@ -82,13 +110,93 @@ export default class User extends Service {
       data: users.rows,
     };
   }
-
-  /**
-   * sellProduct
-   * @param clientId the user who buy a product
-   * @param productId the book which borrower attempt to borrow
-   * @param amount the amount to buy
-   */
+  public async changeTarget(userId: number, changeTo: number) {
+    const { ctx } = this;
+    const { User } = ctx.model;
+    const user = await User.findByPk(userId);
+    user.target = changeTo;
+    await user.save();
+  }
+  public async modifyProductNumber(
+    clientId: number,
+    recordId: number,
+    deltaNumber: number
+  ) {
+    const { ctx } = this;
+    const { User, Record, Product } = ctx.model;
+    const record = await Record.findByPk(recordId);
+    const product = await Product.findByPk(record.productId);
+    if (!record || !product) {
+      throw {
+        code: 0,
+        message: 'Record or product not found',
+      };
+    }
+    if (record.clientId !== clientId) {
+      throw { code: 201, message: 'You are not the buyer!' };
+    }
+    if (Date.now() < new Date(record.expires).getTime()) {
+      throw { code: 202, message: 'the operation is freezed!' };
+    }
+    if (deltaNumber > product.remains) {
+      throw {
+        code: 0,
+        message: 'your modification exceeds the residue of the product!',
+      };
+    }
+    if (-deltaNumber > record.amount) {
+      throw {
+        code: 0,
+        message: 'your modification exceeds the amount you buy!',
+      };
+    }
+    const client = await User.findByPk(clientId);
+    if (deltaNumber * product.price > client.balance) {
+      throw {
+        code: 0,
+        message: 'you do not have enough balance to buy it!',
+      };
+    }
+    record.amount += deltaNumber;
+    record.initialPrice += deltaNumber * product.price;
+    client.balance -= deltaNumber * product.price;
+    product.remains -= deltaNumber;
+    if (record.amount !== 0) {
+      await record.save();
+    } else {
+      await record.destroy();
+    }
+    await product.save();
+    await client.save();
+  }
+  public async modifyProductExpires(
+    clientId: number,
+    recordId: number,
+    expires: Date
+  ) {
+    const { ctx } = this;
+    const { Record } = ctx.model;
+    const record = await Record.findByPk(recordId, {
+      include: {
+        association: 'product',
+        attributes: [['minimum_hold_time', 'minimumHoldTime']],
+      },
+    });
+    if (record.clientId !== clientId) {
+      throw { code: 201, message: 'You are not the buyer!' };
+    }
+    if (
+      expires.getTime() - record.createdAt.getTime() <
+      record.product.minimumHoldTime
+    ) {
+      throw {
+        code: 201,
+        message: 'Freezing time must be larger than the minimum hold time!',
+      };
+    }
+    record.expires = expires;
+    await record.save();
+  }
   public async buyProduct(
     clientId: number,
     productId: number,
@@ -101,6 +209,12 @@ export default class User extends Service {
     if (!product) throw { code: 0, message: 'Product does not exist!' };
     if (product.remains - amount < 0)
       throw { code: 402, message: 'there are no enough products!' };
+    if (expires.getTime() - Date.now() < product.minimumHoldTime) {
+      throw {
+        code: 403,
+        message: 'selected unfreeze time is less than the minimum hold time!',
+      };
+    }
     if (client.balance - amount * product.price < 0) {
       throw {
         code: 401,
@@ -115,23 +229,25 @@ export default class User extends Service {
     return await Record.create({
       productId,
       clientId,
-      initialPrice: product.price,
+      initialPrice: product.price * amount,
       amount,
       expires,
     });
   }
-  /**
-   * getInvestedProducts
-   * get the book borrowed by the user him/herself.
-   * @param selfId
-   * @param page the page number related to the limit
-   * @param limit how many records are showed each page
-   */
+  public async updatePrice(productId: number, newPrice: number) {
+    const { ctx } = this;
+    const { Product } = ctx.model;
+    const product = await Product.findByPk(productId);
+    if (!product) {
+      throw { code: 200, message: 'Product not found' };
+    }
+    product.lastPrice = product.price;
+    product.price = newPrice;
+    await product.save();
+  }
   public async getInvestedProducts(
-    selfId: number,
-    page: number,
-    limit: number
-  ): Promise<{ total: number; list: any[] }> {
+    selfId: number
+  ): Promise<{ total: number; products: any[] }> {
     const { ctx } = this;
     const { Record } = ctx.model;
     const records: {
@@ -156,47 +272,22 @@ export default class User extends Service {
             ['provider_name', 'providerName'],
             ['interest_rate', 'interestRate'],
             'price',
+            'category',
+            ['last_price', 'lastPrice'],
+            'total',
+            'remains',
+            ['minimum_hold_time', 'minimumHoldTime'],
           ],
         },
       ],
-      offset: (page - 1) * limit,
-      limit,
     });
 
-    const products: {
-      id: number;
-      totalPrice: number;
-      profit: number;
-      expires: Date;
-      productName: string;
-      providerName: string;
-      interestRate: number;
-    }[] = [];
-    records.rows.forEach((element) => {
-      products.push({
-        id: element.product.id,
-        totalPrice: element.product.price * element.amount,
-        profit:
-          element.product.price * element.amount -
-          element.initialPrice * element.amount,
-        expires: element.expires,
-        productName: element.product.productName,
-        providerName: element.product.providerName,
-        interestRate: element.product.interestRate,
-      });
-    });
     return {
       total: records.count,
-      list: products,
+      products: records.rows,
     };
   }
-  /**
-   * getProductsInvestedOfUser
-   * get the books borrowed by any user
-   * @param userId the user to query
-   * @param page the page number related to the limit
-   * @param limit how many records are showed each page
-   */
+
   public async getProductsInvestedOfUser(
     clientId: number,
     page: number,
@@ -251,13 +342,6 @@ export default class User extends Service {
     };
   }
 
-  /**
-   * getProductStatus
-   * get the books lending status,
-   * @param productId the book to query
-   * @param page the page number related to the limit
-   * @param limit how many records are showed each page
-   */
   public async getProductStatus(
     productId: number,
     page: number,
@@ -313,18 +397,23 @@ export default class User extends Service {
     const user = await User.findByPk(clientId);
     return user.balance;
   }
+
   public async topUp(clientId: number, amount: number): Promise<any> {
     const { ctx } = this;
     const { User } = ctx.model;
-    const client = User.findByPk(clientId);
+    const client = await User.findByPk(clientId);
     client.balance += amount;
+    if (!client.savedToday) {
+      client.continuous++;
+    }
+    client.savedToday += amount;
     await client.save();
     return client.balance;
   }
   public async withdraw(clientId: number, amount: number): Promise<any> {
     const { ctx } = this;
     const { User } = ctx.model;
-    const client = User.findByPk(clientId);
+    const client = await User.findByPk(clientId);
     if (client.balance < amount) {
       throw { code: 0, message: 'balance is not enough!' };
     }
@@ -410,5 +499,26 @@ export default class User extends Service {
         throw { code: 203, message: 'Admin code not defined!' };
     }
     return this;
+  }
+  public async getSelfCategory(): Promise<number> {
+    const { ctx } = this;
+    const { User } = ctx.model;
+    const { birthday } = await User.findByPk(ctx.session.userId, {
+      attributes: ['birthday'],
+    });
+    if (!birthday) {
+      throw {
+        code: 0,
+        message: 'user not found',
+      };
+    }
+    const age: number = getAge(birthday);
+    const { categories } = this.app.config;
+    for (let i = categories.length - 1; i >= 0; i--) {
+      if (age >= categories[i]) {
+        return i;
+      }
+    }
+    return -1;
   }
 }

@@ -61,6 +61,8 @@ export default class AdminController extends Controller {
       interestRate,
       price,
       total,
+      category,
+      minimumHoldTime,
     } = ctx.request.body;
     if (
       !productName ||
@@ -69,7 +71,9 @@ export default class AdminController extends Controller {
       !interestRate ||
       !validateDouble(interestRate) ||
       !price ||
-      !validateDouble(price)
+      !validateDouble(price) ||
+      !category ||
+      !validateInteger(category)
     )
       throw { code: 100, message: 'Illegal input!' };
     if (productName.length > 255)
@@ -85,7 +89,9 @@ export default class AdminController extends Controller {
       providerName,
       Number.parseFloat(interestRate),
       Number.parseFloat(price),
-      Number.parseFloat(total)
+      Number.parseFloat(total),
+      Number.parseInt(category),
+      Number.parseInt(minimumHoldTime)
     );
     return {
       id,

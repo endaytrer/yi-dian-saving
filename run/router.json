@@ -54,19 +54,6 @@
       "HEAD",
       "GET"
     ],
-    "paramNames": [],
-    "path": "/api/product",
-    "regexp": "/^\\/api\\/product(?:\\/(?=$))?$/",
-    "stack": [
-      "wrappedController"
-    ]
-  },
-  {
-    "name": null,
-    "methods": [
-      "HEAD",
-      "GET"
-    ],
     "paramNames": [
       {
         "name": "id",
@@ -81,6 +68,19 @@
     ],
     "path": "/api/product/:id",
     "regexp": "/^\\/api\\/product\\/((?:[^\\/]+?))(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/product",
+    "regexp": "/^\\/api\\/product(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]
@@ -119,6 +119,104 @@
     "paramNames": [],
     "path": "/api/balance",
     "regexp": "/^\\/api\\/balance(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/topup",
+    "regexp": "/^\\/api\\/topup(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/withdraw",
+    "regexp": "/^\\/api\\/withdraw(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/info",
+    "regexp": "/^\\/api\\/info(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "PUT"
+    ],
+    "paramNames": [],
+    "path": "/api/changepwd",
+    "regexp": "/^\\/api\\/changepwd(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "HEAD",
+      "GET"
+    ],
+    "paramNames": [],
+    "path": "/api/category",
+    "regexp": "/^\\/api\\/category(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "PUT"
+    ],
+    "paramNames": [],
+    "path": "/api/target",
+    "regexp": "/^\\/api\\/target(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "PUT"
+    ],
+    "paramNames": [],
+    "path": "/api/product/expires",
+    "regexp": "/^\\/api\\/product\\/expires(?:\\/(?=$))?$/",
+    "stack": [
+      "wrappedController"
+    ]
+  },
+  {
+    "name": null,
+    "methods": [
+      "POST"
+    ],
+    "paramNames": [],
+    "path": "/api/product/number",
+    "regexp": "/^\\/api\\/product\\/number(?:\\/(?=$))?$/",
     "stack": [
       "wrappedController"
     ]

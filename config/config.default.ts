@@ -15,6 +15,8 @@ export default (appInfo: EggAppInfo) => {
 
   // add your egg config in here
   config.middleware = ['success'];
+  // 年龄分级, 从0开始计数
+  config.categories = [6, 12, 16, 18];
 
   // add your special config in here
   const bizConfig = {
@@ -22,14 +24,6 @@ export default (appInfo: EggAppInfo) => {
   };
 
   // sequelize
-  config.sequelize = {
-    dialect: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: undefined, //TODO: modify the password
-    database: 'yi_dian_saving',
-  };
 
   // the return config will combines to EggAppConfig
   return {

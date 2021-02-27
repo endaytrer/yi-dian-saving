@@ -6,8 +6,11 @@ class Product extends Model {
   providerName: string;
   interestRate: number;
   price: number; // unit price
+  lastPrice: number;
   total: number; // total amount of products
   remains: number;
+  category: number;
+  minimumHoldTime: number;
 
   readonly createdAt: Date;
   readonly updatedAt: Date;
@@ -21,8 +24,11 @@ module.exports = (app: Application) => {
       providerName: { type: STRING(255), allowNull: false },
       interestRate: { type: DOUBLE, allowNull: false },
       price: { type: DOUBLE, allowNull: false },
+      lastPrice: { type: DOUBLE, allowNull: false, defaultValue: 1 },
       total: { type: DOUBLE, allowNull: false },
       remains: { type: DOUBLE, allowNull: false },
+      category: { type: INTEGER, allowNull: false },
+      minimumHoldTime: { type: INTEGER, allowNull: false, defaultValue: 0 },
       createdAt: DATE,
       updatedAt: DATE,
     },

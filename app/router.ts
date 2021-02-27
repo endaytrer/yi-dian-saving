@@ -9,14 +9,21 @@ export default (app: Application) => {
   router.get('/api/login', controller.user.getLoginStatus);
 
   //visitor
-  router.get('/api/product', controller.visitor.getAllProducts);
   router.get('/api/product/:id', controller.visitor.getProductById);
 
   // generalUser
+  router.get('/api/product', controller.general.getAllProducts);
   router.get('/api/owned', controller.general.getInvestedProducts);
   router.post('/api/product', controller.general.buyProduct);
   router.get('/api/balance', controller.general.getBalance);
-
+  router.post('/api/topup', controller.general.topUp);
+  router.post('/api/withdraw', controller.general.withdraw);
+  router.get('/api/info', controller.general.getInfo);
+  router.put('/api/changepwd', controller.general.changePassword);
+  router.get('/api/category', controller.general.getSelfCategory);
+  router.put('/api/target', controller.general.changeTarget);
+  router.put('/api/product/expires', controller.general.modifyProductExpires);
+  router.post('/api/product/number', controller.general.modifyProductNumber);
   // admin
   router.get('/api/admin/user', controller.admin.getAllUsers);
   router.post('/api/admin/product', controller.admin.addProduct);

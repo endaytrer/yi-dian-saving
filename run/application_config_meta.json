@@ -55,15 +55,16 @@
   },
   "keys": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
   "middleware": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
-  "sequelize": {
-    "dialect": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
-    "host": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
-    "port": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
-    "username": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
-    "password": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
-    "database": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts"
-  },
+  "categories": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
   "sourceUrl": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.default.ts",
+  "sequelize": {
+    "dialect": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.local.ts",
+    "host": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.local.ts",
+    "port": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.local.ts",
+    "username": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.local.ts",
+    "password": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.local.ts",
+    "database": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/config.local.ts"
+  },
   "session": {
     "maxAge": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-session/config/config.default.js",
     "key": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-session/config/config.default.js",

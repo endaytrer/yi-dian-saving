@@ -38,10 +38,15 @@ export default class LoginService extends Service {
     if (!match) throw { code: 302, message: 'Password verification failed!' };
     return user;
   }
-  public async signUp(username: string, email: string, password: string) {
+  public async signUp(
+    username: string,
+    email: string,
+    password: string,
+    birthday: Date
+  ) {
     // 验证学工号、姓名、密码是否合法
     const { ctx } = this;
-    
+
     if (
       await ctx.model.User.findOne({
         where: {
@@ -72,8 +77,7 @@ export default class LoginService extends Service {
       userName: username,
       passwordHash,
       email,
-      isAdmin: false,
-      balance: 0,
+      birthday,
     });
     return user;
   }

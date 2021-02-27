@@ -15,14 +15,4 @@ export default class VisitorController extends Controller {
     );
     return product;
   }
-  public async getAllProducts(): Promise<any> {
-    const { page, limit } = this.ctx.request.query;
-    if (!validateInteger(page) || !validateInteger(limit))
-      throw { code: 100, message: 'Illegal input!' };
-    const products = await (await this.getUserService()).getAllProducts(
-      Number.parseInt(page),
-      Number.parseInt(limit)
-    );
-    return products;
-  }
 }

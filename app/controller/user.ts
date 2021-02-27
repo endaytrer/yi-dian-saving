@@ -18,12 +18,17 @@ export default class UserController extends Controller {
   }
   public async signUp() {
     const { ctx } = this;
-    const { email, username, password } = ctx.request.body;
+    const { email, username, password, birthday } = ctx.request.body;
     if (!validateEmail(email)) throw { code: 100, message: 'Illegal email!' };
-    if (!email || !username || !password) {
+    if (!email || !username || !password || !birthday) {
       throw { code: 100, message: 'Illegal input!' };
     }
-    if (email.length > 255 || username.length > 255 || password.length > 255) {
+    if (
+      email.length > 255 ||
+      username.length > 255 ||
+      password.length > 255 ||
+      birthday.length > 255
+    ) {
       throw {
         code: 101,
         message: 'Username or password is too long!',
@@ -33,15 +38,21 @@ export default class UserController extends Controller {
     if (password.length < 6) {
       throw { code: 102, message: 'Password is too short!' };
     }
+    console.log(birthday);
+    if (!Date.parse(birthday)) {
+      throw { code: 103, message: 'Birthday is not valid!' };
+    }
     const user = await ctx.service.loginService.signUp(
       username,
       email,
-      password
+      password,
+      new Date(birthday)
     );
     ctx.session.userId = user.id;
     return {
       userId: user.id,
       name: user.userName,
+      birthday: user.birthday,
     };
   }
   public async signOut() {
