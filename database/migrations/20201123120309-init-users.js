@@ -26,7 +26,7 @@ module.exports = {
       total: { type: DOUBLE, allowNull: false },
       remains: { type: DOUBLE, allowNull: false },
       category: { type: INTEGER, allowNull: false },
-      minimum_hold_time: INTEGER,
+      minimum_hold_time: {type: INTEGER, allowNull: false},
       created_at: DATE,
       updated_at: DATE,
     });

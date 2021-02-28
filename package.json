@@ -8,7 +8,7 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-Exam2",
+    "start": "egg-scripts start --daemon --title=egg-server-Exam2 --env=dev",
     "stop": "egg-scripts stop --title=egg-server-Exam2",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
@@ -25,7 +25,7 @@
     "bcrypt": "^5.0.0",
     "crypto-js": "^4.0.0",
     "egg": "^2.6.1",
-    "egg-scripts": "^2.6.0",
+    "egg-scripts": "^1.2.0",
     "egg-sequelize": "^6.0.0",
     "mocha": "^6.2.3",
     "mysql2": "^2.2.5",

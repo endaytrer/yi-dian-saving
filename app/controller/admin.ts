@@ -73,7 +73,7 @@ export default class AdminController extends Controller {
       !price ||
       !validateDouble(price) ||
       !category ||
-      !validateInteger(category)
+      !validateInteger(category, false, true)
     )
       throw { code: 100, message: 'Illegal input!' };
     if (productName.length > 255)

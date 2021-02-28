@@ -8,7 +8,7 @@ export default () => {
     host: 'localhost',
     port: 3306,
     username: 'root',
-    password: null, //TODO: modify the password
+    password: '@zR208810', //TODO: modify the password
     database: 'yi_dian_saving',
   };
   return config;
