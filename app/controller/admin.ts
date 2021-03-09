@@ -12,7 +12,7 @@ export default class AdminController extends Controller {
     if (!validateInteger(page) || !validateInteger(limit))
       throw {
         code: 100,
-        message: 'Illegal input!',
+        message: '不合法的输入值!',
       };
     const users = await (await this.getUserService()).getAllUsers(
       Number.parseInt(page),
@@ -28,7 +28,7 @@ export default class AdminController extends Controller {
       !validateInteger(page) ||
       !validateInteger(limit)
     ) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     const products = await (await this.getUserService()).getProductStatus(
       Number.parseInt(productId),
@@ -45,7 +45,7 @@ export default class AdminController extends Controller {
       !validateInteger(page) ||
       !validateInteger(limit)
     )
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     const books = await (await this.getUserService()).getProductsInvestedOfUser(
       Number.parseInt(userId),
       Number.parseInt(page),
@@ -75,15 +75,15 @@ export default class AdminController extends Controller {
       !category ||
       !validateInteger(category, false, true)
     )
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     if (productName.length > 255)
-      throw { code: 101, message: 'Name is too long!' };
+      throw { code: 101, message: '名字过长!' };
     if (Number.parseFloat(total) > 2147483647)
-      throw { code: 101, message: 'Sum is too big!' };
+      throw { code: 101, message: '数量太大!' };
     if (Number.parseFloat(interestRate) > 2147483647)
-      throw { code: 101, message: 'Interest rate is too big!' };
+      throw { code: 101, message: '收益率过大!' };
     if (Number.parseFloat(price) > 2147483647)
-      throw { code: 101, message: 'Price is too big!' };
+      throw { code: 101, message: '价格过大!' };
     const id: number = await (await this.getUserService()).addProduct(
       productName,
       providerName,
@@ -100,7 +100,7 @@ export default class AdminController extends Controller {
   public async deleteProduct() {
     const { ctx } = this;
     if (!validateInteger(ctx.params.id))
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入!' };
     await (await this.getUserService()).deleteProduct(
       Number.parseInt(ctx.params.id)
     );

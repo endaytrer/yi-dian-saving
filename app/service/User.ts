@@ -29,9 +29,9 @@ export default class User extends Service {
     const { ctx } = this;
     const { Product } = this.ctx.model;
     const product = await Product.findOne({ where: { id } });
-    if (!product) throw { code: 0, message: 'The product is not found.' };
+    if (!product) throw { code: 0, message: '未找到该理财产品' };
     if (product.remains < product.amount)
-      throw { code: 403, message: 'Not every product has been expired.' };
+      throw { code: 403, message: '产品被其他人拥有了' };
     await ctx.model.Product.destroy({
       where: {
         id,
@@ -129,32 +129,32 @@ export default class User extends Service {
     if (!record || !product) {
       throw {
         code: 0,
-        message: 'Record or product not found',
+        message: '产品或购买记录未找到',
       };
     }
     if (record.clientId !== clientId) {
-      throw { code: 201, message: 'You are not the buyer!' };
+      throw { code: 201, message: '你不是买家!' };
     }
     if (Date.now() < new Date(record.expires).getTime()) {
-      throw { code: 202, message: 'the operation is freezed!' };
+      throw { code: 202, message: '操作已被冻结!' };
     }
     if (deltaNumber > product.remains) {
       throw {
         code: 0,
-        message: 'your modification exceeds the residue of the product!',
+        message: '你将买入的产品数量超过了该产品的剩余!',
       };
     }
     if (-deltaNumber > record.amount) {
       throw {
         code: 0,
-        message: 'your modification exceeds the amount you buy!',
+        message: '你将卖出的产品超过了你拥有的产品!',
       };
     }
     const client = await User.findByPk(clientId);
     if (deltaNumber * product.price > client.balance) {
       throw {
         code: 0,
-        message: 'you do not have enough balance to buy it!',
+        message: '你没有足够的资金来购买. 若需要购买, 请先存钱.',
       };
     }
     record.amount += deltaNumber;
@@ -183,7 +183,7 @@ export default class User extends Service {
       },
     });
     if (record.clientId !== clientId) {
-      throw { code: 201, message: 'You are not the buyer!' };
+      throw { code: 201, message: '你不是买家!' };
     }
     if (
       expires.getTime() - record.createdAt.getTime() <
@@ -191,7 +191,7 @@ export default class User extends Service {
     ) {
       throw {
         code: 201,
-        message: 'Freezing time must be larger than the minimum hold time!',
+        message: '冻结时间必须超过产品的最小买入时间!',
       };
     }
     record.expires = expires;
@@ -206,20 +206,19 @@ export default class User extends Service {
     const { Record, Product, User } = this.ctx.model;
     const client = await User.findByPk(clientId);
     const product = await Product.findByPk(productId);
-    if (!product) throw { code: 0, message: 'Product does not exist!' };
+    if (!product) throw { code: 0, message: '产品不存在!' };
     if (product.remains - amount < 0)
-      throw { code: 402, message: 'there are no enough products!' };
+      throw { code: 402, message: '产品数量不够!' };
     if (expires.getTime() - Date.now() < product.minimumHoldTime) {
       throw {
         code: 403,
-        message: 'selected unfreeze time is less than the minimum hold time!',
+        message: '冻结时间必须超过产品的最小买入时间!',
       };
     }
     if (client.balance - amount * product.price < 0) {
       throw {
         code: 401,
-        message:
-          'Your account does not have enough funds to purchase this product!',
+        message: '你没有足够的资金来购买. 若需要购买, 请先存钱.',
       };
     }
     product.remains -= amount;
@@ -239,7 +238,7 @@ export default class User extends Service {
     const { Product } = ctx.model;
     const product = await Product.findByPk(productId);
     if (!product) {
-      throw { code: 200, message: 'Product not found' };
+      throw { code: 200, message: '该产品未找到' };
     }
     product.lastPrice = product.price;
     product.price = newPrice;
@@ -297,7 +296,7 @@ export default class User extends Service {
     const { User, Record } = ctx.model;
     const user = await User.findByPk(clientId);
     if (!user) {
-      throw { code: 0, message: 'User does not exist!' };
+      throw { code: 0, message: '用户不存在' };
     }
     const products: {
       count: number;
@@ -351,7 +350,7 @@ export default class User extends Service {
     const { Product, Record } = ctx.model;
     const product = await Product.findByPk(productId);
     if (!product) {
-      throw { code: 0, message: 'Product does not exist!' };
+      throw { code: 0, message: '产品不存在' };
     }
     const records: {
       count: number;
@@ -415,7 +414,7 @@ export default class User extends Service {
     const { User } = ctx.model;
     const client = await User.findByPk(clientId);
     if (client.balance < amount) {
-      throw { code: 0, message: 'balance is not enough!' };
+      throw { code: 0, message: '你的零钱不够' };
     }
     client.balance -= amount;
     await client.save();
@@ -430,8 +429,8 @@ export default class User extends Service {
     const { ctx } = this;
     const { User } = ctx.model;
     const client = await User.findByPk(clientId);
-    if (!compare(oldPassword, client.passwordHash)) {
-      throw { code: 302, message: 'Password verification failed' };
+    if (!(await compare(oldPassword, client.passwordHash))) {
+      throw { code: 302, message: '旧密码错误' };
     }
     const saltRounds = 10;
     client.passwordHash = await hash(newPassword, saltRounds);
@@ -442,7 +441,7 @@ export default class User extends Service {
     const { User } = ctx.model;
     const user = await User.findByPk(userId);
     if (!user) {
-      throw { code: 0, message: 'User not found' };
+      throw { code: 0, message: '用户未找到' };
     }
     user.isAdmin = true;
     await user.save();
@@ -452,7 +451,7 @@ export default class User extends Service {
     const { User } = ctx.model;
     const user = await User.findByPk(userId);
     if (!user) {
-      throw { code: 0, message: 'User not found' };
+      throw { code: 0, message: '用户未找到' };
     }
     user.isAdmin = false;
     await user.save();
@@ -468,35 +467,35 @@ export default class User extends Service {
         break;
       case 1:
         if (!clientId) {
-          throw { code: 201, message: 'You are not signed in!' };
+          throw { code: 201, message: '你尚未登录' };
         }
         break;
       case 2:
         if (!clientId) {
-          throw { code: 201, message: 'You are not signed in!' };
+          throw { code: 201, message: '你尚未登录' };
         }
         client = await User.findByPk(clientId);
         if (!client) {
-          throw { code: 0, message: 'client not found!' };
+          throw { code: 0, message: '用户未找到!' };
         }
         if (client.id !== 1 && !client.isAdmin) {
-          throw { code: 202, message: 'You are not permitted!' };
+          throw { code: 202, message: '你的权限不支持你进行此操作' };
         }
         break;
       case 3:
         if (!clientId) {
-          throw { code: 201, message: 'You are not signed in!' };
+          throw { code: 201, message: '你尚未登录' };
         }
         client = await User.findByPk(clientId);
         if (!client) {
-          throw { code: 0, message: 'client not found!' };
+          throw { code: 0, message: '用户未找到!' };
         }
         if (client.id !== 1) {
-          throw { code: 202, message: 'You are not permitted!' };
+          throw { code: 202, message: '你的权限不支持你进行此操作!' };
         }
         break;
       default:
-        throw { code: 203, message: 'Admin code not defined!' };
+        throw { code: 203, message: '你的权限不支持你进行此操作!' };
     }
     return this;
   }
@@ -509,7 +508,7 @@ export default class User extends Service {
     if (!birthday) {
       throw {
         code: 0,
-        message: 'user not found',
+        message: '用户未找到',
       };
     }
     const age: number = getAge(birthday);

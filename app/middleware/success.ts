@@ -1,4 +1,7 @@
 module.exports = () => async (ctx, next) => {
+  // TODO: 模拟网络延时, 须删除
+  // const delayTime = Math.random() * 1000;
+  // await new Promise<void>((resolve) => setTimeout(resolve, delayTime));
   try {
     const responseContent = await next();
     if (responseContent)

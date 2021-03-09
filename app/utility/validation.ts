@@ -25,6 +25,6 @@ function validateDouble(str: string, allowNegative = false, allowZero = false) {
   );
 }
 function validateEmail(str: string) {
-  return /^.+@.+\..+$/.test(str);
+  return /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(str);
 }
 export { validateInteger, validateDouble, validateEmail };

@@ -9,7 +9,7 @@ export default class SuperController extends Controller {
     const { ctx } = this;
     const { id } = ctx.params;
     if (!validateInteger(id)) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     await (await this.getUserService()).addAdmin(id);
   }
@@ -17,7 +17,7 @@ export default class SuperController extends Controller {
     const { ctx } = this;
     const { id } = ctx.params;
     if (!validateInteger(id)) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     return await (await this.getUserService()).deleteAdmin(id);
   }

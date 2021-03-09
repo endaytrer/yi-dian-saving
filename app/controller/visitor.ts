@@ -8,7 +8,7 @@ export default class VisitorController extends Controller {
   public async getProductById(): Promise<any> {
     const { productId } = this.ctx.params.id;
     if (!validateInteger(productId)) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     const product = await (await this.getUserService()).getProductById(
       Number.parseInt(productId)

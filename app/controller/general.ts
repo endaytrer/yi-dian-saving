@@ -15,7 +15,7 @@ export default class GeneralController extends Controller {
     const { changeTo } = ctx.request.body;
     const { userId } = ctx.session;
     if (!validateDouble(changeTo, false, true)) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     await (await this.getUserService()).changeTarget(
       userId,
@@ -29,7 +29,7 @@ export default class GeneralController extends Controller {
     const { userId } = ctx.session;
 
     if (!validateDouble(amount)) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     await (await this.getUserService()).topUp(userId, amount);
     return;
@@ -39,9 +39,11 @@ export default class GeneralController extends Controller {
     const { amount } = this.ctx.request.body;
     const { userId } = ctx.session;
 
-    if (!validateDouble(amount))
-      throw { code: 100, message: 'Illegal input!' };
-    await (await this.getUserService()).withdraw(userId, Number.parseFloat(amount));
+    if (!validateDouble(amount)) throw { code: 100, message: '不合法的输入值!' };
+    await (await this.getUserService()).withdraw(
+      userId,
+      Number.parseFloat(amount)
+    );
     return;
   }
   public async getInfo(): Promise<any> {
@@ -63,7 +65,7 @@ export default class GeneralController extends Controller {
     const { ctx } = this;
     const { deltaNumber, recordId } = ctx.request.body;
     if (!validateDouble(deltaNumber) || !validateInteger(recordId)) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     await (await this.getUserService()).modifyProductNumber(
       ctx.session.userId,
@@ -76,7 +78,7 @@ export default class GeneralController extends Controller {
     const { ctx } = this;
     const { expires, recordId } = ctx.request.body;
     if (!expires || !recordId || !validateInteger(recordId)) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     await (await this.getUserService()).modifyProductExpires(
       ctx.session.userId,
@@ -94,7 +96,7 @@ export default class GeneralController extends Controller {
       !validateDouble(amount) ||
       !expires
     ) {
-      throw { code: 100, message: 'Illegal input!' };
+      throw { code: 100, message: '不合法的输入值!' };
     }
     const record = await (await this.getUserService()).buyProduct(
       ctx.session.userId,
@@ -112,18 +114,19 @@ export default class GeneralController extends Controller {
     if (oldPassword.length > 255 || newPassword.length > 255) {
       throw {
         code: 101,
-        message: 'Password is too long!',
+        message: '密码过长!',
       };
     }
 
     if (newPassword.length < 6) {
-      throw { code: 102, message: 'Password is too short!' };
+      throw { code: 102, message: '密码过短!' };
     }
     await (await this.getUserService()).changePassword(
       ctx.session.userId,
       oldPassword,
       newPassword
     );
+    return;
   }
   public async getSelfCategory() {
     return await (await this.getUserService()).getSelfCategory();

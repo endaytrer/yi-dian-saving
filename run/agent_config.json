@@ -75,7 +75,7 @@
     "onerror": {
       "errorPageUrl": "",
       "appErrorFilter": null,
-      "templatePath": "/home/endaytrer/yi-dian-saving/node_modules/egg-onerror/lib/onerror_page.mustache"
+      "templatePath": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-onerror/lib/onerror_page.mustache"
     },
     "i18n": {
       "defaultLocale": "en_US",
@@ -88,8 +88,8 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "/home/endaytrer/yi-dian-saving/node_modules/egg-watcher/lib/event-sources/default",
-        "development": "/home/endaytrer/yi-dian-saving/node_modules/egg-watcher/lib/event-sources/development"
+        "default": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-watcher/lib/event-sources/default",
+        "development": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-watcher/lib/event-sources/development"
       }
     },
     "customLogger": {
@@ -112,7 +112,7 @@
       "files": 10,
       "fileExtensions": [],
       "whitelist": null,
-      "tmpdir": "/tmp/egg-multipart-tmp/yi-dian-saving-backend",
+      "tmpdir": "/var/folders/ml/2rrzln113wx3736t3725z8tw0000gn/T/egg-multipart-tmp/yi-dian-saving-backend",
       "cleanSchedule": {
         "cron": "0 30 4 * * *"
       }
@@ -136,14 +136,14 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "/home/endaytrer/yi-dian-saving/app/public",
+      "dir": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/app/public",
       "dynamic": true,
       "preload": false,
       "buffer": false,
       "maxFiles": 1000
     },
     "view": {
-      "root": "/home/endaytrer/yi-dian-saving/app/view",
+      "root": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/app/view",
       "cache": false,
       "defaultExtension": ".html",
       "defaultViewEngine": "",
@@ -191,7 +191,7 @@
         "clean": "ets clean"
       },
       "dependencies": {
-        "bcrypt": "^5.0.0",
+        "bcrypt": "^5.0.1",
         "crypto-js": "^4.0.0",
         "egg": "^2.6.1",
         "egg-scripts": "^1.2.0",
@@ -230,9 +230,9 @@
       "author": "",
       "license": "MIT"
     },
-    "baseDir": "/home/endaytrer/yi-dian-saving",
-    "HOME": "/home/endaytrer",
-    "rundir": "/home/endaytrer/yi-dian-saving/run",
+    "baseDir": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving",
+    "HOME": "/Users/endaytrer",
+    "rundir": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -264,7 +264,7 @@
       "onerror": "<Function onerror>"
     },
     "logger": {
-      "dir": "/home/endaytrer/yi-dian-saving/logs/yi-dian-saving-backend",
+      "dir": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/logs/yi-dian-saving-backend",
       "encoding": "utf8",
       "env": "local",
       "level": "INFO",
@@ -351,8 +351,8 @@
         "jsonp"
       ],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-onerror",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-onerror",
       "version": "2.1.0"
     },
     "session": {
@@ -362,8 +362,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-session",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-session",
       "version": "3.2.0"
     },
     "i18n": {
@@ -373,8 +373,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-i18n",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-i18n",
       "version": "2.1.1"
     },
     "watcher": {
@@ -384,8 +384,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-watcher",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-watcher",
       "version": "3.1.1"
     },
     "multipart": {
@@ -397,8 +397,8 @@
         "schedule"
       ],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-multipart",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-multipart",
       "version": "2.10.3"
     },
     "security": {
@@ -410,8 +410,8 @@
         "session"
       ],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-security",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-security",
       "version": "2.8.0"
     },
     "development": {
@@ -425,8 +425,8 @@
       "env": [
         "local"
       ],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-development",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-development",
       "version": "2.7.0"
     },
     "logrotator": {
@@ -438,8 +438,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-logrotator",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-logrotator",
       "version": "3.1.0"
     },
     "schedule": {
@@ -449,8 +449,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-schedule",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-schedule",
       "version": "3.6.6"
     },
     "static": {
@@ -460,8 +460,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/config/plugin.ts",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-static",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/plugin.ts",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-static",
       "version": "2.2.0"
     },
     "jsonp": {
@@ -473,8 +473,8 @@
         "security"
       ],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-jsonp",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-jsonp",
       "version": "2.0.0"
     },
     "view": {
@@ -484,8 +484,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/node_modules/egg/config/plugin.js",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-view",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg/config/plugin.js",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-view",
       "version": "2.1.3"
     },
     "sequelize": {
@@ -495,8 +495,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/endaytrer/yi-dian-saving/config/plugin.ts",
-      "path": "/home/endaytrer/yi-dian-saving/node_modules/egg-sequelize",
+      "from": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/config/plugin.ts",
+      "path": "/Volumes/Data/Files/ACM/Projects/YidianSaving/yi-dian-saving/node_modules/egg-sequelize",
       "version": "6.0.0"
     }
   }

@@ -22,7 +22,7 @@
     "clean": "ets clean"
   },
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "bcrypt": "^5.0.1",
     "crypto-js": "^4.0.0",
     "egg": "^2.6.1",
     "egg-scripts": "^1.2.0",

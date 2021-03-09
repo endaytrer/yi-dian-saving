@@ -4,21 +4,21 @@ export default class LoginService extends Service {
   public async signIn(identity: string, password: string) {
     console.log(identity);
     if (!identity && !password) {
-      throw { code: 300, message: 'Number and password are empty!' };
+      throw { code: 300, message: '身份和密码为空!' };
     }
     if (!identity) {
-      throw { code: 301, message: 'Identity is empty!' };
+      throw { code: 301, message: '身份为空!' };
     }
 
     if (!password) {
-      throw { code: 302, message: 'Password is empty!' };
+      throw { code: 302, message: '密码为空!' };
     }
     if (identity.length > 255 || password.length > 255) {
-      throw { code: 101, message: 'Username or password is too long!' };
+      throw { code: 101, message: '身份或密码过长!' };
     }
     const { ctx } = this;
     if (ctx.session.userId) {
-      throw { code: 303, message: 'You have already signed in!' };
+      throw { code: 303, message: '你已经登录过了!' };
     }
 
     let user = await ctx.model.User.findOne({
@@ -33,9 +33,9 @@ export default class LoginService extends Service {
           email: identity,
         },
       }));
-    if (!user) throw { code: 301, message: 'Username does not exists!' };
+    if (!user) throw { code: 301, message: '用户不存在' };
     const match = await compare(password, user.passwordHash);
-    if (!match) throw { code: 302, message: 'Password verification failed!' };
+    if (!match) throw { code: 302, message: '密码错误!' };
     return user;
   }
   public async signUp(
@@ -56,7 +56,7 @@ export default class LoginService extends Service {
     ) {
       throw {
         code: 304,
-        message: 'The username have been already registered!',
+        message: '该用户名已被注册',
       };
     }
     if (
@@ -68,7 +68,7 @@ export default class LoginService extends Service {
     ) {
       throw {
         code: 304,
-        message: 'The username have been already registered!',
+        message: '该邮箱已被注册',
       };
     }
     const saltRounds = 10;
