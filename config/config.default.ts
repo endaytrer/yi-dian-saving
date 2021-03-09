@@ -9,6 +9,14 @@ export default (appInfo: EggAppInfo) => {
     },
   };
 
+  config.sequelize = {
+    dialect: 'mysql',
+    host: 'localhost',
+    port: 3306,
+    username: 'root',
+    password: '@zR208810', //TODO: modify the password
+    database: 'yi_dian_saving',
+  };
   // override config from framework / plugin
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1606050620304_8666';
