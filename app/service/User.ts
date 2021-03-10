@@ -508,7 +508,7 @@ export default class User extends Service {
         if (!client) {
           throw { code: 0, message: '用户未找到!' };
         }
-        if (client.id !== 2) {
+        if (client.id !== 1) {
           throw { code: 202, message: '你的权限不支持你进行此操作!' };
         }
         break;
