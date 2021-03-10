@@ -37,4 +37,5 @@ export default (app: Application) => {
   // superuser
   router.get('/api/super/:id', controller.super.addAdmin);
   router.delete('/api/super/:id', controller.super.deleteAdmin);
+  router.put('/api/super/changepwd', controller.super.suChangePassword);
 };

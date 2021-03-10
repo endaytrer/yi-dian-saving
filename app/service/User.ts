@@ -17,6 +17,7 @@ export default class User extends Service {
       providerName: providerName,
       interestRate: interestRate,
       price,
+      lastPrice: price,
       total,
       remains: total,
       category,
@@ -429,8 +430,25 @@ export default class User extends Service {
     const { ctx } = this;
     const { User } = ctx.model;
     const client = await User.findByPk(clientId);
+    if (!client) {
+      throw { code: 1, message: '用户未找到' };
+    }
     if (!(await compare(oldPassword, client.passwordHash))) {
       throw { code: 302, message: '旧密码错误' };
+    }
+    const saltRounds = 10;
+    client.passwordHash = await hash(newPassword, saltRounds);
+    await client.save();
+  }
+  public async suChangePassword(
+    clientId: number,
+    newPassword: string
+  ): Promise<any> {
+    const { ctx } = this;
+    const { User } = ctx.model;
+    const client = await User.findByPk(clientId);
+    if (!client) {
+      throw { code: 1, message: '用户未找到' };
     }
     const saltRounds = 10;
     client.passwordHash = await hash(newPassword, saltRounds);
@@ -490,7 +508,7 @@ export default class User extends Service {
         if (!client) {
           throw { code: 0, message: '用户未找到!' };
         }
-        if (client.id !== 1) {
+        if (client.id !== 2) {
           throw { code: 202, message: '你的权限不支持你进行此操作!' };
         }
         break;

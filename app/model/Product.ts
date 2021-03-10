@@ -24,7 +24,7 @@ module.exports = (app: Application) => {
       providerName: { type: STRING(255), allowNull: false },
       interestRate: { type: DOUBLE, allowNull: false },
       price: { type: DOUBLE, allowNull: false },
-      lastPrice: { type: DOUBLE, allowNull: false, defaultValue: 1 },
+      lastPrice: { type: DOUBLE, allowNull: false },
       total: { type: DOUBLE, allowNull: false },
       remains: { type: DOUBLE, allowNull: false },
       category: { type: INTEGER, allowNull: false },

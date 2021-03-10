@@ -21,4 +21,16 @@ export default class SuperController extends Controller {
     }
     return await (await this.getUserService()).deleteAdmin(id);
   }
+  public async suChangePassword(): Promise<void> {
+    const { ctx } = this;
+    const { userId, newPassword } = ctx.request.body;
+    if (!userId || !newPassword || !validateInteger(userId)) {
+      throw { code: 100, message: '不合法的输入值!' };
+    }
+    if (newPassword.length < 6) {
+      throw { code: 102, message: '密码过短!' };
+    }
+    await (await this.getUserService()).suChangePassword(userId, newPassword);
+    return;
+  }
 }

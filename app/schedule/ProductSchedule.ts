@@ -12,7 +12,7 @@ export default class ProductSchedule extends Subscription {
     const { Product } = ctx.model;
     const allProducts = await Product.findAll();
     allProducts.forEach((product) => {
-      const rand = (Math.random() - 0.5) / 2 + (1 + product.interestRate / 365);
+      const rand = (Math.random() - 0.5) * product.interestRate / 50 + (1 + product.interestRate / 365);
       const newPrice = product.price * rand;
       ctx.service.user.updatePrice(product.id, newPrice);
     });
